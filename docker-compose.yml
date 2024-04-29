@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  bdd:
+    container_name: reims_mariadb
+    image: mariadb:latest
+    restart: always
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: TOOR
+      MARIADB_DATABASE: reims
+      MARIADB_USER: roger
+      MARIADB_PASSWORD: regor
+    ports:
+      - 3306:3306
+    profiles: [prod, dev]
+
+  adminer:
+    container_name: reims_adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    profiles: [dev]
