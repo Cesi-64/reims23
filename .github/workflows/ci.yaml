@@ -71,7 +71,12 @@ jobs:
       - name: Run User router test
         run: npm run test:file user_route
 
-  deploy:
+  canary:
     needs: [routage]
-    if: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
+    if: ${{ github.event_name == 'push' && github.ref_name == 'main' && contains(github.event.head_commit.message, '#canary')}}
     uses: ./.github/workflows/canary.yaml
+
+  prod:
+    needs: [routage]
+    if: ${{ github.event_name == 'push' && github.ref_name == 'main' && contains(github.event.head_commit.message, '#prod')}}
+    uses: ./.github/workflows/docker.yaml
