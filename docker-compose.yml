@@ -10,8 +10,18 @@ services:
       MARIADB_DATABASE: reims
       MARIADB_USER: roger
       MARIADB_PASSWORD: regor
+    profiles: [prod, dev]
+
+  api:
+    container_name: reims_api
+    image: senseo/reims23:main
+    restart: always
+    depends_on:
+      - bdd
     ports:
-      - 3306:3306
+      - 23000:23000
+    environment:
+      BDD_HOST: bdd
     profiles: [prod, dev]
 
   adminer:
