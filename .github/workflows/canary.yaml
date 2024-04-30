@@ -19,8 +19,5 @@ jobs:
             - name: install Dependencies
               run: npm i --omit=dev
 
-            - name: Start Docker Maraidb
-              run: docker-compose --profile=dev up -d
-
             - name: Start API
               run: npm run start
