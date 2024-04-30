@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   bdd:
     container_name: reims_mariadb
