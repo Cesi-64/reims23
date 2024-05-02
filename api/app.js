@@ -4,6 +4,7 @@ const cors = require('cors')
 
 /*** INIT API */
 const app = express()
+app.disable("x-powered-by")
 
 app.use(cors())
 

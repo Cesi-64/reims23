@@ -9,3 +9,5 @@ test
 docker-compose.yml
 Dockerfile
 pm2.config.js
+.scannerwork
+scripts
