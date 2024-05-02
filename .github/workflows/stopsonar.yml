@@ -1,0 +1,23 @@
+name: Stop SonarQube
+
+on:
+    workflow_dispatch
+
+jobs:
+    StopSonar:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Azure Login
+              uses: Azure/login@v1
+              with:
+                creds: ${{ secrets.AZCREDS }}
+
+            - name: Azure CLI
+              uses: azure/CLI@v1
+              with:
+                azcliversion: 2.30.0
+                inlineScript: |
+                    az vm stop --resource-group cda23reims --name sonar
+                    az vm deallocate --resource-group cda23reims --name sonar
+            
