@@ -15,7 +15,11 @@ let sequelize = new Sequelize(
 const db = {}
 db.sequelize = sequelize
 db.User = require('./models/user_m')(sequelize)
-// model cocktail
+db.Cocktail = require('./models/cocktail_m')(sequelize)
+
+db.User.hasMany(db.Cocktail, {foreignKey: 'user_id', onDelete: 'cascade'})
+db.Cocktail.belongsTo(db.User, {foreignKey: 'user_id'})
+
 
 /*** SYNCHRO */
 //db.sequelize.sync({alter: true})
