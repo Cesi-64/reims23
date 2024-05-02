@@ -32,5 +32,9 @@ module.exports = (sequelize) => {
         user.password = hash
     })
 
+    User.checkPassword = async (password, original) => {
+        return await bcrypt.compare(password, original)
+    }
+
     return User
 }
