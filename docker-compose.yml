@@ -10,7 +10,7 @@ services:
       MARIADB_DATABASE: reims
       MARIADB_USER: roger
       MARIADB_PASSWORD: regor
-    profiles: [prod, dev]
+    profiles: [local, prod, dev]
 
   api:
     container_name: reims_api
